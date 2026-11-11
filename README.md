@@ -54,9 +54,15 @@ The suite is fully offline: it uses `tmp_path` fixtures and an injected fake clo
 <!-- builder:roadmap:start -->
 ## Status
 
-**In active development:** 0 of 1 milestones done.
+**Complete.** Eventide is a finished small-scale append-only JSON-lines event store featuring a BankAccount aggregate that enforces no-overdraft and positive-amount invariants, plus a Typer/Rich CLI (deposit/withdraw/balance/log/reset) backed by .eventide/log.jsonl. The implementation includes atomic fsync appends, monotonic sequence numbers, replay/fold with truncated-tail corruption detection, and a full offline pytest suite.
 
 ## Roadmap
 
-- [ ] **Core event store, aggregate, and CLI**: Ship a runnable package: an append-only JSON-lines EventStore (atomic append with fsync, monotonic sequence numbers, replay/fold, corruption detection on truncated last line), a BankAccount aggregate enforcing invariants (no overdraft, positive amounts) that emits domain events, and a Typer + Rich CLI with deposit/withdraw/balance/log/reset commands backed by a local .eventide/log.jsonl file. Include pytest coverage for append ordering, replay determinism, overdraft rejection, idempotent sequence assignment, and recovery from a truncated tail, plus a README with the exact showcase session.
+- [x] **Core event store, aggregate, and CLI**: Ship a runnable package: an append-only JSON-lines EventStore (atomic append with fsync, monotonic sequence numbers, replay/fold, corruption detection on truncated last line), a BankAccount aggregate enforcing invariants (no overdraft, positive amounts) that emits domain events, and a Typer + Rich CLI with deposit/withdraw/balance/log/reset commands backed by a local .eventide/log.jsonl file. Include pytest coverage for append ordering, replay determinism, overdraft rejection, idempotent sequence assignment, and recovery from a truncated tail, plus a README with the exact showcase session.
+
+## Ideas for future work
+
+- Add CLI end-to-end integration tests invoking the installed binary
+- Implement snapshot/compaction for large event logs
+- Add event schema versioning for forward compatibility
 <!-- builder:roadmap:end -->
