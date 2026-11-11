@@ -1,0 +1,7 @@
+# Managed by the builder: every commit passes these rules (CI runs `ruff check .`).
+line-length = 100
+target-version = "py311"
+
+[lint]
+select = ["E4", "E7", "E9", "F", "B", "I", "UP"]
+ignore = ["E402", "B008"]
